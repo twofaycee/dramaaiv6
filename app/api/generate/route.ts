@@ -1,0 +1,1 @@
+import {generateFilmVideo} from '@/lib/runway';export async function POST(req:Request){const {prompt,genre}=await req.json();const r=await generateFilmVideo(prompt);return Response.json({...r,title:prompt.slice(0,40).toUpperCase(),genre})}

@@ -1,0 +1,1 @@
+export async function generateFilmVideo(prompt:string){const key=process.env.RUNWAY_API_KEY;if(!key)return {mock:true,video_url:null,script:prompt};return {mock:true,video_url:null,script:prompt}}
