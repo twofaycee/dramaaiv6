@@ -1,0 +1,26 @@
+'use client'
+import { useState } from 'react'
+export default function Bot(){
+  const [log,setLog]=useState<any>(null)
+  const [loading,setLoading]=useState(false)
+  const run=async()=>{
+    setLoading(true)
+    try{
+      const r=await fetch('/api/bot/run')
+      const d=await r.json()
+      setLog(d)
+    }catch(e:any){ setLog({error:e.message}) }
+    setLoading(false)
+  }
+  return(
+    <main style={{background:'#000',color:'#fff',minHeight:'100vh',padding:'40px'}}>
+      <a href='/' style={{color:'#E50914',textDecoration:'none',fontWeight:900}}>← DRAMA.AI</a>
+      <h1 style={{fontSize:48,fontWeight:900,marginTop:20}}>🤖 DRAMA.AI BOT</h1>
+      <p style={{color:'#888',marginTop:8}}>Autonomous scheduler - schedules 3 films, archives flops, features winners</p>
+      <button onClick={run} disabled={loading} style={{marginTop:20,background:'#22c55e',color:'#000',border:'none',padding:'12px 24px',borderRadius:999,fontWeight:900,cursor:'pointer'}}>
+        {loading?'Running...':'▶ Run Bot Now'}
+      </button>
+      {log&&<pre style={{marginTop:20,background:'#111',padding:16,borderRadius:8,fontSize:11,whiteSpace:'pre-wrap'}}>{JSON.stringify(log,null,2)}</pre>}
+    </main>
+  )
+}
