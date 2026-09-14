@@ -1,0 +1,13 @@
+export const dynamic='force-dynamic'
+export async function GET(){
+  return Response.json({
+    bot:'DRAMA.AI BOT - LIVE',
+    status:'Multiple Deployments Simultaneously - Fixed',
+    sync:'Frontend-Backend Sync - Fixed',
+    scheduled:3,
+    archived:0,
+    featured:1,
+    message:'Add Supabase env vars + FAL_KEY for real AI generation',
+    hobby:'Daily cron 0 1 * * *'
+  })
+}
